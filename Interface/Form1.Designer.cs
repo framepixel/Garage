@@ -56,6 +56,10 @@
             this.label13 = new System.Windows.Forms.Label();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
             this.comboBox6 = new System.Windows.Forms.ComboBox();
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
@@ -81,7 +85,6 @@
             this.label1.Size = new System.Drawing.Size(82, 18);
             this.label1.TabIndex = 0;
             this.label1.Text = "Add Vehicle";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // textBox1
             // 
@@ -223,7 +226,6 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(100, 24);
             this.comboBox1.TabIndex = 18;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // comboBox2
             // 
@@ -271,7 +273,6 @@
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(100, 24);
             this.comboBox3.TabIndex = 25;
-            this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
             // 
             // button5
             // 
@@ -281,6 +282,7 @@
             this.button5.TabIndex = 26;
             this.button5.Text = "Show All Tables";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // label11
             // 
@@ -329,6 +331,10 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.textBox7);
+            this.panel1.Controls.Add(this.label21);
+            this.panel1.Controls.Add(this.textBox5);
+            this.panel1.Controls.Add(this.label18);
             this.panel1.Controls.Add(this.comboBox6);
             this.panel1.Controls.Add(this.label19);
             this.panel1.Controls.Add(this.label20);
@@ -346,6 +352,38 @@
             this.panel1.Size = new System.Drawing.Size(279, 389);
             this.panel1.TabIndex = 30;
             // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(146, 310);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(100, 22);
+            this.textBox7.TabIndex = 50;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(21, 315);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(38, 16);
+            this.label21.TabIndex = 51;
+            this.label21.Text = "Floor";
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(146, 283);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(100, 22);
+            this.textBox5.TabIndex = 48;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(21, 288);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(53, 16);
+            this.label18.TabIndex = 49;
+            this.label18.Text = "Parking";
+            // 
             // comboBox6
             // 
             this.comboBox6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -354,6 +392,7 @@
             this.comboBox6.Name = "comboBox6";
             this.comboBox6.Size = new System.Drawing.Size(100, 24);
             this.comboBox6.TabIndex = 47;
+            this.comboBox6.SelectedIndexChanged += new System.EventHandler(this.comboBox6_SelectedIndexChanged);
             // 
             // label19
             // 
@@ -376,12 +415,13 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(97, 282);
+            this.button7.Location = new System.Drawing.Point(97, 338);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(75, 23);
             this.button7.TabIndex = 44;
             this.button7.Text = "Leave";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // textBox2
             // 
@@ -541,6 +581,10 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.Label label18;
     }
 }
 

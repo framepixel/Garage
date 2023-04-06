@@ -43,6 +43,9 @@ namespace Garage
             this._address = address;
         }
 
+        /*
+         * This function returns all the available parkings in the database
+         */
         public static List<Parking> GetAllParkings()
         {
             string connectionString = "server=localhost;database=garage_db;user=root;password=sqlPASS2001.";
@@ -64,6 +67,35 @@ namespace Garage
             }
         }
 
+        /*
+         * This function returns a parking using and id as a parameter in the database
+         */
+        public static Parking GetParkingById(int id)
+        {
+            string connectionString = "server=localhost;database=garage_db;user=root;password=sqlPASS2001.";
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+
+                MySqlCommand command = new MySqlCommand("SELECT * FROM parking WHERE id = @id", connection);
+                command.Parameters.AddWithValue("@id", id);
+                MySqlDataReader reader = command.ExecuteReader();
+                Parking ls = null;
+                if (reader.Read())
+                {
+                    ls = new Parking(int.Parse(reader["id"].ToString()), reader["name"].ToString(), reader["address"].ToString());
+                }
+                reader.Close();
+                connection.Close();
+                return ls;
+            }
+        }
+
+        /*
+         * This function adds a parking to the database
+         */
+
         public static void AddParking(Parking v)
         {
             string connectionString = "server=localhost;database=garage_db;user=root;password=sqlPASS2001.";
@@ -82,6 +114,9 @@ namespace Garage
             }
         }
 
+        /*
+         * This function returns all the available parking spots with a parking id from the database
+         */
         public static int GetAllAvailableParkingSpots(int id)
         {   
             List<Floor> floorList = Floor.GetFloorsByParkingId(id);

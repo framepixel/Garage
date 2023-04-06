@@ -43,6 +43,9 @@ namespace Garage
             this._name = name;
         }
 
+        /*
+         * This function returns all the floors
+         */
         public static List<Floor> GetAllFloors()
         {
             string connectionString = "server=localhost;database=garage_db;user=root;password=sqlPASS2001.";
@@ -67,6 +70,9 @@ namespace Garage
             }
         }
 
+        /*
+         * This function returns all the floors that belong to a specific parking
+         */
         public static List<Floor> GetFloorsByParkingId(int id)
         {
             string connectionString = "server=localhost;database=garage_db;user=root;password=sqlPASS2001.";
@@ -92,6 +98,37 @@ namespace Garage
             }
         }
 
+        /*
+         * This function return a floor using an id
+         */
+        public static Floor GetFloorById(int id)
+        {
+            string connectionString = "server=localhost;database=garage_db;user=root;password=sqlPASS2001.";
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+
+                MySqlCommand command = new MySqlCommand("SELECT * FROM floor WHERE id = @id", connection);
+                command.Parameters.AddWithValue("@id", id);
+                MySqlDataReader reader = command.ExecuteReader();
+                Floor ls = null;
+                if (reader.Read())
+                {
+                    ls = new Floor(int.Parse(reader["id"].ToString()),
+                                            int.Parse(reader["parking_id"].ToString()),
+                                            reader["name"].ToString());
+                }
+                reader.Close();
+                connection.Close();
+                return ls;
+
+            }
+        }
+
+        /*
+         * This function adds a floor to a parking 
+         */
         public static void AddFloor(Floor v)
         {
             string connectionString = "server=localhost;database=garage_db;user=root;password=sqlPASS2001.";

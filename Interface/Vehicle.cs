@@ -27,28 +27,11 @@ namespace Garage
                 this._type = Type;
         }
 
-        private static bool CheckIfExists(string Id)
-        {
-            string connectionString = "server=localhost;database=garage_db;user=root;password=sqlPASS2001.";
-            using (var connection = new MySqlConnection(connectionString))
-            {
-                string query = $"SELECT COUNT(*) FROM vehicles WHERE id = \"@Value\"";
-                using (var command = new MySqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@Value", Id);
-                    connection.Open();
-                    long count = (long)command.ExecuteScalar();
-                    connection.Close();
-                    if (count > 0)
-                        throw new Exception("Element Available Exception");
-                    return false;
-                }
-            }
-        }
-
+        /*
+         * This function adds a vehicle to the database
+         */
         public static void AddVehicle(Vehicle v)
         {   
-            //CheckIfExists(v.Id);
             string connectionString = "server=localhost;database=garage_db;user=root;password=sqlPASS2001.";
             using (var connection = new MySqlConnection(connectionString))
             {
@@ -64,6 +47,9 @@ namespace Garage
             }
         }
 
+        /*
+         * This function returns all vehicles from the database
+         */
         public static List<Vehicle> GetAllVehicles()
         {
             string connectionString = "server=localhost;database=garage_db;user=root;password=sqlPASS2001.";
@@ -86,6 +72,9 @@ namespace Garage
             }
         }
 
+        /*
+         * This function returns all non parked vehicles from the database
+         */
         public static List<Vehicle> GetAllNonParkedVehicles()
         {
             string connectionString = "server=localhost;database=garage_db;user=root;password=sqlPASS2001.";
@@ -126,6 +115,9 @@ namespace Garage
             }
         }
 
+        /*
+         * This function returns all parked vehicles
+         */
         public static List<Vehicle> GetAllParkedVehicles()
         {
             string connectionString = "server=localhost;database=garage_db;user=root;password=sqlPASS2001.";
@@ -166,6 +158,9 @@ namespace Garage
             }
         }
 
+        /*
+         * This function makes a vehicle enter a parking spot
+         */
         public static void EnterParking(string id_vehicle, int id_parking)
         {
 
@@ -174,7 +169,6 @@ namespace Garage
             foreach (Floor floor in floorList)
             {
                 parking_Spot = Parking_Spot.GetFirstEmptyParkingSpotByFloorId(floor.Id);
-                Console.WriteLine("id of ps:", parking_Spot.Id);
                 if (parking_Spot != null) break;
             }
 
