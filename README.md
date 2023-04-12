@@ -7,6 +7,12 @@ This project is a simulation of a parking lot using C# and Windows Forms.
 - Microsoft Visual Studio
 - .NET Framework
 
+### Required Packages
+- MySQL Data
+- MySQL Connector
+- Portable BouncyCastle
+- Google ProtoBuf
+
 ### Functionality
 This section shows how the application work.
 
